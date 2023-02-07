@@ -1,13 +1,12 @@
-try:
-    from time import time, strftime, localtime
-    from common.Config import config
-    from common import Request, Assert
-    from common.Hash import add_url
-    from common.Robot import robot
-except EnvironmentError:
-    import os
-    import sys
-    sys.path.append(os.path.split(os.path.abspath(os.path.dirname(__file__)))[0])
+from time import time, strftime, localtime
+import os
+import sys
+
+sys.path.append(os.path.split(os.path.abspath(os.path.dirname(__file__)))[0])
+from common.Config import config
+from common import Request, Assert
+from common.Hash import add_url
+from common.Robot import robot
 
 
 # 用户日收入消费榜单
