@@ -34,7 +34,7 @@ def achievementRank(rankType=1):
             payRank += ('{} | {} - 今日消费:{}\n'.format(i['uid'], i['name'], i['score']))
         for j in res['body']['data']['list']:
             payTotal += int(j['score'])
-        payRank += '截止{} 消费前50用户消费总额：{}元'.format(strftime('%m-%d %H:%M', localtime(time())),
+        payRank += '截止{} 前50用户消费总额：{}元'.format(strftime('%m-%d %H:%M', localtime(time())),
                                                                     payTotal)
         print(payRank)
         robot('success', payRank)
@@ -45,7 +45,7 @@ def achievementRank(rankType=1):
             incomeRank += ('{} | {} - 今日收入:{}\n'.format(i['uid'], i['name'], i['score']))
         for j in res['body']['data']['list']:
             incomeTotal += int(j['score'])
-        incomeRank += '截止{} 收入前50用户收入总额：{}元'.format(strftime('%m-%d %H:%M', localtime(time())),
+        incomeRank += '截止{} 前50用户收入总额：{}元'.format(strftime('%m-%d %H:%M', localtime(time())),
                                                                 incomeTotal)
         print(incomeRank)
         robot('success', incomeRank)
