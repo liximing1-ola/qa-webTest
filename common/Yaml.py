@@ -12,7 +12,7 @@ class Yaml:
         读取yaml
         :return: yaml_data
         """
-        yaml_path = config.BASE_PATH + '/Conf/yaml_File/' + yaml_fileName
+        yaml_path = config.BASE_PATH + '/conf/yaml_File/' + yaml_fileName
         try:
             if not os.path.exists(yaml_path):
                 Logs.get_log('read_yaml.log').error('文件地址-{} 不存在'.format(yaml_path))
@@ -24,8 +24,3 @@ class Yaml:
                 return yaml_data[yaml_name]
         except Exception as e:
             Logs.get_log('read_yaml.log').error('读取{} 文件报错，错误是{}'.format(yaml_path, e))
-
-
-if __name__ == '__main__':
-    y = Yaml.read_yaml('User.yml', 'data_party_meet_match')
-    print(y)

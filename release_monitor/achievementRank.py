@@ -9,6 +9,8 @@ from common.Hash import add_url
 from common.Robot import robot
 
 
+# if($op === 'consume' && (in_array($type,['chat-gift','defend','package','chat-coin','package-coin','coin-shop-buy','games-package']) || ($type === 'shop-buy' && in_array($reason['cid'], array(5, 6, 7)))))
+
 # 用户日收入消费榜单
 def achievementRank(rankType=1):
     """
@@ -27,16 +29,24 @@ def achievementRank(rankType=1):
     Assert.assert_len(res['body'], 'data', 1)
     if rankType == 2:
         payRank = ''
-        for i in res['body']['data']['list']:
+        payTotal = 0
+        for i in res['body']['data']['list'][:10]:
             payRank += ('{} | {} - 今日消费:{}\n'.format(i['uid'], i['name'], i['score']))
-        payRank += '截止{} 用户消费前50（单位：元）'.format(strftime('%m-%d %H:%M', localtime(time())))
+        for j in res['body']['data']['list']:
+            payTotal += int(j['score'])
+        payRank += '截止{} 消费前50用户消费总额：{}元'.format(strftime('%m-%d %H:%M', localtime(time())),
+                                                                    payTotal)
         print(payRank)
         robot('success', payRank)
     elif rankType == 1:
         incomeRank = ''
-        for i in res['body']['data']['list']:
+        incomeTotal = 0
+        for i in res['body']['data']['list'][:10]:
             incomeRank += ('{} | {} - 今日收入:{}\n'.format(i['uid'], i['name'], i['score']))
-        incomeRank += '截止{} 用户收入前50（单位：元）'.format(strftime('%m-%d %H:%M', localtime(time())))
+        for j in res['body']['data']['list']:
+            incomeTotal += int(j['score'])
+        incomeRank += '截止{} 收入前50用户收入总额：{}元'.format(strftime('%m-%d %H:%M', localtime(time())),
+                                                                incomeTotal)
         print(incomeRank)
         robot('success', incomeRank)
 
