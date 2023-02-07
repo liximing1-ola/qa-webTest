@@ -14,7 +14,7 @@ class Json:
         读取json文件
         :return:
         """
-        json_path = config.BASE_PATH + '/Conf/json_File/' + json_fileName
+        json_path = config.BASE_PATH + '/conf/json_File/' + json_fileName
         try:
             if not os.path.exists(json_path):
                 Logs.get_log('read_json.log').error('文件地址: {} 不存在'.format(json_path))

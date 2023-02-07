@@ -17,7 +17,7 @@ class Yaml:
             if not os.path.exists(yaml_path):
                 Logs.get_log('read_yaml.log').error('文件地址-{} 不存在'.format(yaml_path))
                 return FileExistsError
-            yaml_data = yaml.load(open(yaml_path, 'r', encoding='utf-8'), Loader=yaml.FullLoader)  # 添加后不会报warning
+            yaml_data = yaml.load(open(yaml_path, 'r', encoding='utf-8'), Loader=yaml.SafeLoader)  # 添加后不会报warning
             if yaml_data[yaml_name] is None:
                 return TypeError
             else:
