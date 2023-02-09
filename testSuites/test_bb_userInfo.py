@@ -20,34 +20,13 @@ class TestUserInfo(object):
                                    url_query=config.banban_query,
                                    url_format='json',
                                    ver=3,
-                                   uid=100287189)
+                                   uid=126425689)
         res = Request.get_request_session(url=user_profile_url, data=None)
         Assert.assert_code(res['code'], 200)
         Assert.assert_body(res['body'], 'success', 1)
         Assert.assert_len(res['body'], 'data', 1)
         print(res['body']['data'])
 
-    def test_02_achievementRank(self):
-        """
-        用例描述：
-        """
-        user_profile_url = add_url(url_host=config.release_bb_host,
-                                   url_base='rank/charmAchieve',
-                                   url_query=config.banban_query,
-                                   url_format='json',
-                                   type=2,
-                                   tab=1,
-                                   page=1)
-        res = Request.get_request_session(url=user_profile_url, data=None)
-        Assert.assert_code(res['code'], 200)
-        Assert.assert_body(res['body'], 'success', 1)
-        Assert.assert_len(res['body'], 'data', 1)
-        print(res)
-        print(len(res['body']['data']['list']))
-        for i in res['body']['data']['list']:
-            print(i['uid'], i['name'], i['score'])
-
 
 if __name__ == '__main__':
-    # userInfo = TestUserInfo.test_01_UserProfileHome
-    rank1 = TestUserInfo.test_02_achievementRank
+    userInfo = TestUserInfo.test_01_UserProfileHome
