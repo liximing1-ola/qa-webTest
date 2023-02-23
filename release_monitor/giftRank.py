@@ -24,7 +24,7 @@ def giftRank(rankType=1):
     Assert.assert_code(res['code'], 200)
     Assert.assert_body(res['body'], 'success', 1)
     Assert.assert_len(res['body'], 'data', 1)
-    print(res['body']['data']['list'])
+    # print(res['body']['data']['list'])
     if rankType == 2:
         payRank = ''
         for i in res['body']['data']['list']:
