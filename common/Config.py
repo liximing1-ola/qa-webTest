@@ -10,7 +10,8 @@ class config:
     #  生成报告地址
     report_path = os.path.join(BASE_PATH, 'report')
     #  release域名
-    domain_host = {'bb': 'https://api-new.yinjietd.com/', }
+    domain_host = {'bb': 'https://api-new.yinjietd.com/',
+                   'bb-46': 'https://192.168.11.46'}
     release_bb_host = domain_host['bb']
 
     # qq_login url

@@ -12,7 +12,7 @@ from common.Robot import robot
 # if($op === 'consume' && (in_array($type,['chat-gift','defend','package','chat-coin','package-coin','coin-shop-buy','games-package']) || ($type === 'shop-buy' && in_array($reason['cid'], array(5, 6, 7)))))
 
 # 用户日收入消费榜单
-def achievementRank(rankType, tab=2):
+def achievementRank(rankType, tab=1):
     if rankType == 1:
         incomeRank = ''
         incomeTotal_50 = 0
@@ -39,6 +39,7 @@ def achievementRank(rankType, tab=2):
                                    type=rankType,
                                    tab=tab,
                                    page=2)
+        print(user_profile_url)
         res = Request.get_request_session(url=user_profile_url, data=None)
         for j in res['body']['data']['list']:
             incomeTotal_100 += int(j['score'])
@@ -46,7 +47,7 @@ def achievementRank(rankType, tab=2):
                                                                time_total,
                                                              (incomeTotal_50 + incomeTotal_100))
         print(incomeRank)
-        robot('success', incomeRank)
+        # robot('success', incomeRank)
 
     if rankType == 2:
         payRank = ''
@@ -81,7 +82,7 @@ def achievementRank(rankType, tab=2):
                                                             time_total,
                                                          payTotal_50 + payTotal_100)
         print(payRank)
-        robot('success', payRank)
+        # robot('success', payRank)
 
 
 if __name__ == '__main__':
