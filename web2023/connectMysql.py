@@ -39,3 +39,37 @@ class conMysql:
             print('update fail', error)
         finally:
             conMysql.con.commit()
+
+    @staticmethod
+    def insertIdCard(uid):
+        sql = 'select uid from xs_user_idcard order by id desc limit 1'
+        conMysql.cur.execute(sql)
+        uuid = conMysql.cur.fetchone()
+        sql = 'insert into xs_user_idcard(uid, app_id, cardname, cardnum, cardfront, cardback, cardin, state, dateline, update_time) ' \
+              'select {} as uid, app_id, cardname, cardnum, cardfront, cardback, cardin, state, dateline, update_time' \
+              ' from xs_user_idcard where uid = {}'.format(uid, uuid)
+        try:
+            conMysql.cur.execute(sql)
+        except Exception as error:
+            conMysql.con.rollback()
+            print('insert fail', error)
+        finally:
+            conMysql.con.commit()
+
+    @staticmethod
+    def insertPeople(rid):
+        uids = {"0": 100287189, "1": 100010055, "9": 100010056, "3": 100010057, "4": 100010058, "5": 100010059,
+                "6": 100010060, "7": 100010061, "8": 100010068, "2": 131565153, "10": 100010073, "11": 100010075}
+        try:
+            for k, v in uids.items():
+                sql = 'UPDATE xs_chatroom_config SET uid = {} WHERE rid = {} and position = {}'.format(v, rid, int(k))
+                conMysql.cur.execute(sql)
+        except Exception as error:
+            conMysql.con.rollback()
+            print(error)
+        finally:
+            conMysql.con.commit()
+            print('insert success')
+            conMysql.con.close()
+
+
