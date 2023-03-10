@@ -63,4 +63,4 @@ def insertPerson():
 
 
 if __name__ == "__main__":
-    app.run(port=2020, host="127.0.0.1", debug=True)
+    app.run(port=2023, host="192.168.11.57", debug=True)
