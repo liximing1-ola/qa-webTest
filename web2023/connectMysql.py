@@ -74,7 +74,7 @@ class conMysql:
 
     @staticmethod
     def sqlDemo(user_id):
-        sql = "select username from qa_case.user where id='{}'".format(user_id)
+        sql = "select username from qa_case.user where id={}".format(user_id)
         try:
             conMysql.cur.execute(sql)
             res = conMysql.cur.fetchall()

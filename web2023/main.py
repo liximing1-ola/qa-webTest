@@ -34,7 +34,7 @@ def add():
         money = request.args.get('money')
     if len(uid) == 9 and int(money) < 2000000000:
         conMysql.updateMoneySql(uid, money)
-        return '<h3>---------恭喜你，充值成功！！！----------</h3>'
+        return '<h3>---------恭喜你，充值金额：{} 已到账！！！----------</h3>'.format(money)
     return '<h3>---------------提交失败!!!---------------</h3>'
 
 
