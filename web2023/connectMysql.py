@@ -80,6 +80,7 @@ class conMysql:
         try:
             conMysql.cur.execute(sql)
             res = conMysql.cur.fetchall()
+            print(res)
             if len(res) > 0:
                 return res
         except Exception as error:
@@ -140,6 +141,10 @@ class conMysql:
         finally:
             conMysql.con.commit()
             conMysql.con.close()
+
+
+if __name__ == '__main__':
+    conMysql.sqlDemo(677)
 
 
 
