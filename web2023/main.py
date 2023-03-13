@@ -84,7 +84,7 @@ def createRoomPage():
 
 
 @app.route('/createRoom', methods=['GET', 'POST'])
-def sqlDemo():
+def createRoom():
     if request.method == 'POST':
         uid = request.form['uid']
         factory_type = request.form['type']
@@ -100,12 +100,12 @@ def sqlDemo():
 
 
 @app.route('/pay')
-def addPage():
+def payPage():
     return render_template("pay.html")
 
 
 @app.route('/pay', methods=['GET', 'POST'])
-def add():
+def pay():
     if request.method == 'POST':
         uid = request.form['uid']
         money = request.form['money']
@@ -119,12 +119,12 @@ def add():
 
 
 @app.route('/addCommodity')
-def addPage():
+def addCommodityPage():
     return render_template("addCommodity.html")
 
 
 @app.route('/addCommodity', methods=['GET', 'POST'])
-def add():
+def addCommodity():
     if request.method == 'POST':
         uid = request.form['uid']
     else:
