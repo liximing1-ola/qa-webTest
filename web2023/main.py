@@ -70,15 +70,13 @@ def insertPerson():
 @app.route('/sqlDemo', methods=['GET', 'POST'])
 def sqlDemo():
     if request.method == 'POST':
-        rid = request.form['rid']
+        id = request.form['id']
     else:
-        rid = request.args.get('rid')
-    if len(rid) > 0:
-        rid = conMysql.sqlDemo(rid)
-        return '<h3>---------恭喜你，查询结果：{}----------</h3>'.format(rid)
-    return '<h3>---------恭喜你，查询结果：{}----------</h3>'.format(rid)
+        id = request.args.get('id')
+    id = conMysql.sqlDemo(id)
+    return '<h3>---------恭喜你，查询结果：{}----------</h3>'.format(id)
 
 
 if __name__ == "__main__":
-    app.run(port=2023, host="192.168.11.57", debug=False)
-    # app.run(port=2020, host='127.0.0.1', debug=True)
+    # app.run(port=2023, host="192.168.11.57", debug=False)
+    app.run(port=2020, host='127.0.0.1', debug=True)
