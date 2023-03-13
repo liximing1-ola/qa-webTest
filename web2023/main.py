@@ -92,7 +92,7 @@ def createRoom():
         uid = request.args.get('uid')
         factory_type = request.args.get('type')
     if len(uid) == 9:
-        url = '192.168.11.46/test/changeRoom?uid={}&factory_type={}&property=business'.format(uid, factory_type)
+        url = '192.168.11.46/test/changeRoom?uid={}&factory_type={}&property=business'.format(int(uid), factory_type)
         res = requests.get(url)
         if res.status_code == 200:
             return '<h3>---------创建成功：{}----------</h3>'.format(res.json())
