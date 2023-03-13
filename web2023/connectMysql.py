@@ -132,13 +132,12 @@ class conMysql:
                 conMysql.cur.execute(sql1)
             conMysql.cur.execute(sql2)
             res = conMysql.cur.fetchall()
-            if res is not None:
-                return res
+            if res is None:
+                return 0
+            return res
         except Exception as error:
             conMysql.con.rollback()
             print(error)
-        else:
-            print('commodity insert success')
         finally:
             conMysql.con.commit()
             conMysql.con.close()
