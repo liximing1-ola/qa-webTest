@@ -92,7 +92,7 @@ def createRoom():
         uid = request.args.get('uid')
         factory_type = request.args.get('type')
     if len(uid) == 9:
-        url = '192.168.11.46/test/changeRoom?uid={}&factory_type={}&property=business'.format(int(uid), factory_type)
+        url = 'http://192.168.11.46/test/changeRoom?uid={}&factory_type={}&property=business'.format(int(uid), factory_type)
         res = requests.get(url)
         if res.status_code == 200:
             return '<h3>---------创建成功：{}----------</h3>'.format(res.json())
@@ -136,5 +136,5 @@ def addCommodity():
 
 
 if __name__ == "__main__":
-    app.run(port=2023, host="192.168.11.57", debug=True)
+    app.run(port=20230, host="192.168.11.57", debug=False)
     # app.run(port=2020, host='127.0.0.1', debug=True)

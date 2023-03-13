@@ -108,7 +108,6 @@ class conMysql:
         sql2 = 'SELECT * from xs_user_commodity where uid = {}'.format(uid)
         try:
             conMysql.cur.execute(sql1)
-            time.sleep(1)
             conMysql.cur.execute(sql2)
             res = conMysql.cur.fetchone()
             if res is None:
