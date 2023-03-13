@@ -72,4 +72,15 @@ class conMysql:
             print('insert success')
             conMysql.con.close()
 
+    @staticmethod
+    def sqlDemo(user_id):
+        sql = "select username from qa_case.user where id='{}'".format(user_id)
+        try:
+            conMysql.cur.execute(sql)
+            res = conMysql.cur.fetchall()
+            if len(res) > 0:
+                return res
+        except Exception as error:
+            print(error)
+
 

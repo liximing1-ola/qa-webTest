@@ -24,6 +24,11 @@ def insertPersonPage():
     return render_template("insertPerson.html")
 
 
+@app.route('/sqlDemo')
+def sqlDemoPage():
+    return render_template('sqlDemo.html')
+
+
 @app.route('/add', methods=['GET', 'POST'])
 def add():
     if request.method == 'POST':
@@ -62,5 +67,18 @@ def insertPerson():
     return '<h3>--------------提交失败!!!---------------</h3>'
 
 
+@app.route('/sqlDemo', methods=['GET', 'POST'])
+def sqlDemo():
+    if request.method == 'POST':
+        rid = request.form['rid']
+    else:
+        rid = request.args.get('rid')
+    if len(rid) > 0:
+        rid = conMysql.sqlDemo(rid)
+        return '<h3>---------恭喜你，查询结果：{}----------</h3>'.format(rid)
+    return '<h3>---------恭喜你，查询结果：{}----------</h3>'.format(rid)
+
+
 if __name__ == "__main__":
-    app.run(port=2023, host="192.168.11.57", debug=True)
+    app.run(port=2023, host="192.168.11.57", debug=False)
+    # app.run(port=2020, host='127.0.0.1', debug=True)
