@@ -112,8 +112,8 @@ def pay():
     else:
         uid = request.args.get('uid')
         money = request.args.get('money')
-    if len(uid) == 9 and int(money) < 1000000:
-        conMysql.pay(uid, money)
+    if len(uid) == 9 and int(money) < 100000000:
+        conMysql.pay(uid, int(money))
         return '<h3>---------恭喜你，充值成功（money不会到账）！！！----------</h3>'.format(money)
     return '<h3>---------------充值失败!!!---------------</h3>'
 

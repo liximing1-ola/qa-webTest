@@ -87,7 +87,7 @@ class conMysql:
 
     @staticmethod
     def pay(uid, money):
-        order_id = '381{}ad0dd8taa00{}'.format(str(random.randint(1, 50)),
+        order_id = '281{}ad0dd8taa00{}'.format(str(random.randint(1, 50)),
                                                str(random.choice('abcdefghijklmnopqrstuvwxyz!@#$%^&*()')))
         sql = "INSERT INTO xs_pay (uid, order_id, money, transaction_id, platform, create_time, end_time, state, ip, type, todo_id, product_name, buyer_account, buyer_id, source, app) VALUES ({}, '{}', {}, '4200000160201809161783627131', 'wechat', 1635696000, 1635696000, 'success',613787442, 'recharge', 1737783, '充值', 'oDe8X0tcPpUATk248lcbbD9C6wV0', 'oDe8XX0tcPpUATk248lcbbD9C6wV0', 'h5', 'iamban')".format(
             uid, order_id, money)
