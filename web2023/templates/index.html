@@ -10,40 +10,79 @@
  padding: 32px 64px;
  text-align: center;
  background-color: white;
- color: black;
+ color: red;
  border: 2px solid #4CAF50;
  border-radius:5px;
  }
  .button:hover {
  background-color: #4CAF50;
- color: white;
+ color: blue;
  }
+        .two{
+        position: absolute;
+        width:300px
+        height:300px
+        background: #9ca05c;
+        display: flex;
+        left:36%;
+        top:2%;
+        margin-left: -150px;
+        margin-right: -150px
+        }
+        .one{
+        position: absolute;
+        width:300px
+        height:300px
+        background: #9ca05c;
+        display: flex;
+        left:12%;
+        top:10%;
+        margin-left: -150px;
+        margin-right: -150px
+        }
+        .th{
+        position: absolute;
+        width:300px
+        height:300px
+        background: #9ca05c;
+        display: flex;
+        left:47%;
+        top:20%;
+        margin-left: -150px;
+        margin-right: -150px
+        }
  </style>
 </head>
+ <div class="two">
 <h2>-------------生活充满了选择，而生活的态度就是一切！--------------</h2>
+ </div>
   <body>
-  <a href="/add">
+   <div class="one">
+       <a href="/add">
     <button class="button">用户加钱</button>
   </a>
-  <a href="/idChange">
+       <a href="/idChange">
     <button class="button">身份认证</button>
   </a>
-  <a href="/insertPerson">
+       <a href="/insertPerson">
     <button class="button">房间加人</button>
   </a>
-  <a href="/addCommodity">
-    <button class="button">用户加物品(待补充)</button>
+       <a href="/addCommodity">
+    <button class="button">用户加物品</button>
   </a>
-    <a href="/创建房间">
-    <button class="button">创建商业房(待更新)</button>
+       <a href="/createRoom">
+    <button class="button">创建商业房</button>
+  </a>
+       <a href="/pay">
+    <button class="button">内网模拟充值</button>
   </a>
       <a href="/sqlDemo">
-    <button class="button">SQL注入示例</button>
-  </a>
-      <a href="/addCommodity">
-    <button class="button">待补充...</button>
+    <button class="button">SQL注入Demo</button>
   </a>
   <br />
-  <h5>(----------------广告位招租！！！-----------------)</h5>
+</div>
   </body>
+<div class="th">
+  <h5>(----------------广告位招租！！！-----------------)</h5>
+</div>
 </html>

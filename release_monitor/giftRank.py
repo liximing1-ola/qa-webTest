@@ -1,6 +1,7 @@
 from time import time, strftime, localtime
 import os
 import sys
+import requests
 
 sys.path.append(os.path.split(os.path.abspath(os.path.dirname(__file__)))[0])
 from common.Config import config

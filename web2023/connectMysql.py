@@ -3,6 +3,8 @@
 #  @author: WuBingBing
 
 import pymysql
+import random
+import time
 
 
 class conMysql:
@@ -82,5 +84,65 @@ class conMysql:
                 return res
         except Exception as error:
             print(error)
+
+    @staticmethod
+    def pay(uid, money):
+        order_id = '381{}ad0dd8taa00{}'.format(str(random.randint(1, 50)),
+                                               str(random.choice('abcdefghijklmnopqrstuvwxyz!@#$%^&*()')))
+        sql = "INSERT INTO xs_pay (uid, order_id, money, transaction_id, platform, create_time, end_time, state, ip, type, todo_id, product_name, buyer_account, buyer_id, source, app) VALUES ({}, '{}', {}, '4200000160201809161783627131', 'wechat', 1635696000, 1635696000, 'success',613787442, 'recharge', 1737783, '充值', 'oDe8X0tcPpUATk248lcbbD9C6wV0', 'oDe8XX0tcPpUATk248lcbbD9C6wV0', 'h5', 'iamban')".format(
+            uid, order_id, money)
+        try:
+            conMysql.cur.execute(sql)
+        except Exception as error:
+            conMysql.con.rollback()
+            print(error)
+        else:
+            print('commodity insert success')
+        finally:
+            conMysql.con.commit()
+            conMysql.con.close()
+
+    @staticmethod
+    def delCommodity(uid):
+        sql1 = "DELETE FROM xs_user_commodity where uid = {}".format(uid)
+        sql2 = 'SELECT * from xs_user_commodity where uid = {}'.format(uid)
+        try:
+            conMysql.cur.execute(sql1)
+            time.sleep(1)
+            conMysql.cur.execute(sql2)
+            res = conMysql.cur.fetchone()
+            if res is None:
+                print('del success')
+        except Exception as error:
+            conMysql.con.rollback()
+            print('del fail', error)
+        finally:
+            conMysql.con.commit()
+
+    @staticmethod
+    def addCommodity(uid):
+        cids = [2, 3, 4, 9, 12, 13, 14, 15, 16, 17, 18, 20, 38, 100, 174, 175, 176, 177, 23629, 23630, 23631, 20878]
+        sql2 = 'select cid, name  from xs_commodity where cid in ({})'.format(cids)
+        conMysql.delCommodity(uid)
+        try:
+            for cid in cids:
+                dateline = str(int(time.time()))
+                sql1 = 'INSERT into xs_user_commodity(uid, cid, state, num, period_end, used, in_use, dateline) ' \
+                       'VALUES ({}, {}, 0,{},0,0,0,{})'.format(uid, cid, 3, dateline)
+                conMysql.cur.execute(sql1)
+            conMysql.cur.execute(sql2)
+            res = conMysql.cur.fetchall()
+            if res is not None:
+                return res
+        except Exception as error:
+            conMysql.con.rollback()
+            print(error)
+        else:
+            print('commodity insert success')
+        finally:
+            conMysql.con.commit()
+            conMysql.con.close()
+
+
 
 
