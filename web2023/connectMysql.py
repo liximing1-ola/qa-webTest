@@ -80,9 +80,7 @@ class conMysql:
         try:
             conMysql.cur.execute(sql)
             res = conMysql.cur.fetchall()
-            print(res)
-            if len(res) > 0:
-                return res
+            return res
         except Exception as error:
             print(error)
 
