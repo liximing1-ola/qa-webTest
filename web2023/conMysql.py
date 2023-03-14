@@ -56,7 +56,7 @@ class mysql:
         self._reConn()
         self.conn.close()
 
-    def querry(self, sql):
+    def query(self, sql):
         try:
             self._reConn()
             self.cursor = self.conn.cursor()
@@ -65,7 +65,7 @@ class mysql:
             self.cursor.close()
             return results
         except Exception as e:
-            print("querry异常:" + str(e))
+            print("query异常:" + str(e))
             return None
 
     def insert(self, sql, param):
@@ -105,7 +105,7 @@ class mysql:
             print(uuid)
             sql1 = 'insert into xs_user_idcard(uid, app_id, cardname, cardnum, cardfront, cardback, cardin, state, dateline, update_time) ' \
                    'select {} as uid, app_id, cardname, cardnum, cardfront, cardback, cardin, state, dateline, update_time' \
-                   ' from xs_user_idcard where uid = {}'.format(uid, uuid)
+                   ' from xs_user_idcard where uid = {}'.format(uid, uuid[0])
             self.cursor.execute(sql1)
             self.conn.commit()
             self.cursor.close()
