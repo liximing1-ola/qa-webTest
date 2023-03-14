@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request
 from connectMysql import conMysql
+from conMysql import mysql
 import requests
 
 app = Flask(__name__)
+mysql = mysql()
 
 
 @app.route('/')
@@ -25,6 +27,7 @@ def add():
         money = request.args.get('money')
     if len(uid) == 9 and int(money) < 2000000000:
         conMysql.updateMoneySql(int(uid), int(money))
+        mysql.updateMoneySql(uid, money)
         return '<h3>---------恭喜你，金额：{}钻 已到账！！！----------</h3>'.format(money)
     return '<h3>---------------打款失败!!!---------------</h3>'
 
@@ -75,7 +78,7 @@ def sqlDemo():
     else:
         user_id = request.args.get('id')
     user_name = conMysql.sqlDemo(user_id)
-    return '<h3>---------当前查询结果：{}----------</h3>'.format(user_name)
+    return '<h3>当前查询结果：{}</h3>'.format(user_name)
 
 
 @app.route('/createRoom')
@@ -92,7 +95,8 @@ def createRoom():
         uid = request.args.get('uid')
         factory_type = request.args.get('type')
     if len(uid) == 9:
-        url = 'http://192.168.11.46/test/changeRoom?uid={}&factory_type={}&property=business'.format(int(uid), factory_type)
+        url = 'http://192.168.11.46/test/changeRoom?uid={}&factory_type={}&property=business'.format(int(uid),
+                                                                                                     factory_type)
         res = requests.get(url)
         if res.status_code == 200:
             return '<h3>---------创建成功：{}----------</h3>'.format(res.json())
