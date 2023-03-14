@@ -43,7 +43,7 @@ def idChange():
     else:
         uid = request.args.get('uid')
     if len(uid) == 9:
-        conMysql.insertIdCard(uid)
+        mysql.insertIdCard(uid)
         return '<h3>---------恭喜你，身份信息修改成功！！！----------</h3>'
     return '<h3>--------------修改失败!!!---------------</h3>'
 
@@ -60,7 +60,7 @@ def insertPerson():
     else:
         rid = request.args.get('rid')
     if len(rid) == 9:
-        conMysql.insertPeople(rid)
+        mysql.insertPeople(rid)
         return '<h3>---------恭喜你，加人成功，刷新下room.config即可！！！----------</h3>'
     return '<h3>--------------提交失败!!!---------------</h3>'
 
@@ -76,7 +76,7 @@ def sqlDemo():
         user_id = request.form['id']
     else:
         user_id = request.args.get('id')
-    user_name = conMysql.sqlDemo(user_id)
+    user_name = mysql.sqlDemo(user_id)
     return '<h3>当前查询结果：{}</h3>'.format(user_name)
 
 
@@ -116,7 +116,7 @@ def pay():
         uid = request.args.get('uid')
         money = request.args.get('money')
     if len(uid) == 9 and int(money) < 100000000:
-        conMysql.pay(uid, int(money))
+        mysql.pay(uid, int(money))
         return '<h3>---------恭喜你，充值成功（money不会到账）！！！----------</h3>'.format(money)
     return '<h3>---------------充值失败!!!---------------</h3>'
 
@@ -133,7 +133,7 @@ def addCommodity():
     else:
         uid = request.args.get('uid')
     if len(uid) == 9:
-        res = conMysql.addCommodity(uid)
+        res = mysql.addCommodity(uid)
         return '<h3>---------恭喜你，背包请查收！！！物品明细 {}----------</h3>'.format(res)
     return '<h3>---------------加物品失败!!!---------------</h3>'
 
