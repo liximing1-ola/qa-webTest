@@ -8,7 +8,7 @@ import time
 class conMysql:
     db_config = {"dev_46_db": '192.168.11.46',
                  "dev_46_user": 'root',
-                 "dev_46_pas": '123456',}
+                 "dev_46_pas": '123456'}
     _dbUrl = db_config['dev_46_db']
     _user = db_config['dev_46_user']
     _password = db_config['dev_46_pas']
@@ -37,6 +37,7 @@ class conMysql:
             print('update fail', error)
         finally:
             conMysql.con.commit()
+            conMysql.con.close()
 
     @staticmethod
     def insertIdCard(uid):
@@ -54,6 +55,7 @@ class conMysql:
             print('insert fail', error)
         finally:
             conMysql.con.commit()
+            conMysql.con.close()
 
     @staticmethod
     def insertPeople(rid):
@@ -133,8 +135,6 @@ class conMysql:
                 conMysql.cur.execute(sql1)
             conMysql.cur.execute(sql2)
             res = conMysql.cur.fetchall()
-            if res is None:
-                return 0
             return res
         except Exception as error:
             conMysql.con.rollback()
