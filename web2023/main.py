@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request
-from connectMysql import conMysql
 from conMysql import mysql
 import requests
 
