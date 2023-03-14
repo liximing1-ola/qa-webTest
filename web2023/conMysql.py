@@ -103,10 +103,10 @@ class mysql:
             self.cursor.execute(sql)
             uuid = self.cursor.fetchone()
             print(uuid)
-            sql = 'insert into xs_user_idcard(uid, app_id, cardname, cardnum, cardfront, cardback, cardin, state, dateline, update_time) ' \
-                  'select {} as uid, app_id, cardname, cardnum, cardfront, cardback, cardin, state, dateline, update_time' \
-                  ' from xs_user_idcard where uid = {}'.format(uid, uuid)
-            self.cursor.execute(sql)
+            sql1 = 'insert into xs_user_idcard(uid, app_id, cardname, cardnum, cardfront, cardback, cardin, state, dateline, update_time) ' \
+                   'select {} as uid, app_id, cardname, cardnum, cardfront, cardback, cardin, state, dateline, update_time' \
+                   ' from xs_user_idcard where uid = {}'.format(uid, uuid)
+            self.cursor.execute(sql1)
             self.conn.commit()
             self.cursor.close()
         except Exception as error:
@@ -192,3 +192,8 @@ class mysql:
         except Exception as error:
             self.conn.rollback()
             print(error)
+
+
+if __name__ == '__main__':
+    mysql = mysql()
+    mysql.insertIdCard(uid=193188003)
