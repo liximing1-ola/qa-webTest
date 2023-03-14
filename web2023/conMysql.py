@@ -102,6 +102,7 @@ class mysql:
             self.cursor = self.conn.cursor()
             self.cursor.execute(sql)
             uuid = self.cursor.fetchone()
+            print(uuid)
             sql = 'insert into xs_user_idcard(uid, app_id, cardname, cardnum, cardfront, cardback, cardin, state, dateline, update_time) ' \
                   'select {} as uid, app_id, cardname, cardnum, cardfront, cardback, cardin, state, dateline, update_time' \
                   ' from xs_user_idcard where uid = {}'.format(uid, uuid)
@@ -109,7 +110,7 @@ class mysql:
             self.conn.commit()
             self.cursor.close()
         except Exception as error:
-            self.cursor.rollback()
+            self.conn.rollback()
             print('insert fail', error)
 
     def insertPeople(self, rid):
@@ -124,7 +125,7 @@ class mysql:
             self.conn.commit()
             self.cursor.close()
         except Exception as error:
-            self.cursor.rollback()
+            self.conn.rollback()
             print(error)
 
     def sqlDemo(self, user_id):
