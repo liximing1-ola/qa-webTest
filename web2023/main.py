@@ -132,8 +132,8 @@ def addCommodity():
     else:
         uid = request.args.get('uid')
     if len(uid) == 9:
-        res = mysql.addCommodity(uid)
-        return '<h3>---------恭喜你，背包请查收！！！物品明细 {}----------</h3>'.format(res)
+        mysql.addCommodity(uid)
+        return '<h3>---------恭喜你，背包请查收！！！----------</h3>'
     return '<h3>---------------加物品失败!!!---------------</h3>'
 
 

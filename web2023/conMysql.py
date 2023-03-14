@@ -174,7 +174,6 @@ class mysql:
 
     def addCommodity(self, uid):
         cids = [2, 3, 4, 9, 12, 13, 14, 15, 16, 17, 18, 20, 38, 100, 174, 175, 176, 177, 23629, 23630, 23631, 20878]
-        sql2 = 'select cid, name  from xs_commodity where cid in ({})'.format(cids)
         mysql().delCommodity(uid)
         try:
             self._reConn()
@@ -184,11 +183,8 @@ class mysql:
                 sql1 = 'INSERT into xs_user_commodity(uid, cid, state, num, period_end, used, in_use, dateline) ' \
                        'VALUES ({}, {}, 0,{},0,0,0,{})'.format(uid, cid, 3, dateline)
                 self.cursor.execute(sql1)
-            self.cursor.execute(sql2)
-            res = self.cursor.fetchall()
             self.conn.commit()
             self.cursor.close()
-            return res
         except Exception as error:
             self.conn.rollback()
             print(error)
