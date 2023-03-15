@@ -81,7 +81,6 @@ class mysql:
             print("insert异常:" + str(e))
             return False
 
-    # 更新用户账户余额
     def updateMoneySql(self, uid, money=0, money_cash=0, money_cash_b=0, money_b=0, gold_coin=0, money_debts=0):
         sql = "update xs_user_money set money={}, money_b={}, money_cash={}, money_cash_b={},gold_coin={}, money_debts={} " \
               "where uid={} limit 1".format(money, money_b, money_cash, money_cash_b, gold_coin, money_debts, uid)
