@@ -59,7 +59,7 @@ class InterfaceConcurrency(TaskSet):
 class websiteUser(HttpUser):
     tasks = [InterfaceConcurrency]
     wait_time = between(1, 3)  # s
-    host = 'https://192.168.11.46/'
+    host = 'https://192.168.11.46/'  # http://localhost:8089/
 
 
 if __name__ == "__main__":
