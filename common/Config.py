@@ -23,3 +23,4 @@ class config:
                     '_model': 'HD1900',
                     '_index': '666',
                     '_timestamp': int(time.time())}
+
