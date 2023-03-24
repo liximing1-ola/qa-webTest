@@ -11,7 +11,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)  # 禁用安
 # Hatch rate (users spawned/second)：每秒启动的虚拟用户数
 class InterfaceConcurrency(TaskSet):
 
-    @task
+    @task(1)
     def on_init(self):
         headers = {
             "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko)\
