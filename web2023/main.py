@@ -57,7 +57,7 @@ def sqlDemo():
     if len(user_id) == 3:
         user_name = mysql.sqlDemo(user_id)
     else:
-        return '<h3>No{}</h3>'
+        return '<h3>No</h3>'
     return '<h3>当前查询结果：{}</h3>'.format(user_name)
 
 
