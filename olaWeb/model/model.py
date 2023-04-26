@@ -13,7 +13,7 @@ class Config(object):
     user = 'root'
     password = '123456'
     database = 'qa_case'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://%s:%s@127.0.0.1:3306/%s' % (user, password, database)
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://%s:%s@192.168.11.46:3306/%s' % (user, password, database)
 
     # 设置sqlalchemy自动更跟踪数据库
     SQLALCHEMY_TRACK_MODIFICATIONS = True
