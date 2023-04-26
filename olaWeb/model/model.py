@@ -44,17 +44,6 @@ class Share(db.Model):
 
 
 
-class User(db.Model):
-    # 定义表名
-    __tablename__ = 'users'
-    # 定义字段
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.String(64), unique=True, index=True)
-    email = db.Column(db.String(64), unique=True)
-    pswd = db.Column(db.String(64))
-    role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))  # 设置外键
-
-
 if __name__ == '__main__':
     # 删除所有表
     # db.drop_all()
