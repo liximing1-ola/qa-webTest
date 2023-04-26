@@ -16,7 +16,6 @@ class mysql:
                  charset='utf8'):
         self.cursor = None
         self.host = host
-        self.host = host
         self.user = user
         self.passwd = passwd
         self.db = db
