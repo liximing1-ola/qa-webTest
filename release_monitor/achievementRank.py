@@ -47,7 +47,7 @@ def achievementRank(rankType, tab=1):
                                                                time_total,
                                                              (incomeTotal_50 + incomeTotal_100))
         print(incomeRank)
-        robot('success', incomeRank)
+        #robot('success', incomeRank)
 
     if rankType == 2:
         payRank = ''
@@ -82,9 +82,9 @@ def achievementRank(rankType, tab=1):
                                                             time_total,
                                                          payTotal_50 + payTotal_100)
         print(payRank)
-        robot('success', payRank)
+        #robot('success', payRank)
 
 
 if __name__ == '__main__':
-    achievementRank(1)
-    achievementRank(2)
+    achievementRank(1, 2)
+    achievementRank(2, 2)

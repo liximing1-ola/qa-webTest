@@ -1,0 +1,20 @@
+from flask import Blueprint, render_template, request, session, jsonify, redirect, url_for, Flask
+import time
+
+from olaWeb.model.model import Share
+
+share = Blueprint("share", __name__, url_prefix="/share")
+app = Flask(__name__)
+
+
+# 展示全部分享
+# share.route("/shareList")
+def shareAll():
+    # order_by按照时间倒序
+    blogList = Share.query.order_by(Share.create_time.desc()).all()
+    print(blogList)
+    return jsonify(blogList)
+
+
+if __name__ == "__main__":
+    shareAll()
