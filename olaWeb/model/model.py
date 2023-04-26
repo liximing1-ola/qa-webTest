@@ -35,8 +35,13 @@ class Share(db.Model):
     __tablename__ = 'shareList'
     # 定义字段
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.String(64), unique=True)
-    users = db.relationship('User', backref='role')  # 反推与role关联的多个User模型对象
+    auther = db.Column(db.String(64))
+    title = db.Column(db.String(128), unique=True)
+    link = db.Column(db.Text())
+    create_time = db.Column(db.Time)
+    update_time = db.Column(db.Time)
+    deleted = db.Column(db.Boolean, default=0)
+
 
 
 class User(db.Model):
