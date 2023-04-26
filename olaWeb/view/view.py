@@ -1,6 +1,8 @@
 from flask import Blueprint, render_template, request, session, jsonify, redirect, url_for, Flask
 import time
-
+import os
+import sys
+sys.path.append(os.path.split(os.path.abspath(os.path.dirname(__file__)))[0])
 from olaWeb.model.model import Share
 
 share = Blueprint("share", __name__, url_prefix="/share")
