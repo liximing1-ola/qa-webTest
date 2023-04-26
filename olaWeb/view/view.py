@@ -3,8 +3,7 @@ import time
 import os
 import sys
 sys.path.append(os.path.split(os.path.abspath(os.path.dirname(__file__)))[0])
-from olaWeb.model.model import Share
-
+from olaWeb.model import model
 share = Blueprint("share", __name__, url_prefix="/share")
 app = Flask(__name__)
 
@@ -13,7 +12,7 @@ app = Flask(__name__)
 # share.route("/shareList")
 def shareAll():
     # order_by按照时间倒序
-    blogList = Share.query.order_by(Share.create_time.desc()).all()
+    blogList = model.Share.query.order_by(model.Share.create_time.desc()).all()
     print(blogList)
     return jsonify(blogList)
 
