@@ -38,15 +38,13 @@ class Share(db.Model):
     auther = db.Column(db.String(64))
     title = db.Column(db.String(128), unique=True)
     link = db.Column(db.Text())
-    create_time = db.Column(db.Time)
-    update_time = db.Column(db.Time)
-    deleted = db.Column(db.Boolean, default=0)
-
+    create_time = db.Column(db.Date)
+    update_time = db.Column(db.Date)
+    deleted = db.Column(db.Integer, default=0)
 
 
 if __name__ == '__main__':
     # 删除所有表
-    # db.drop_all()
-
+    db.drop_all()
     # 创建所有表
-    db.create_all()
+    # db.create_all()
