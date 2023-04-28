@@ -24,3 +24,8 @@ class config:
                     '_index': '666',
                     '_timestamp': int(time.time())}
 
+
+if __name__ == '__main__':
+    import platform
+
+    print(platform.node())
