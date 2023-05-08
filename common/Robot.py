@@ -5,10 +5,8 @@ def robot(mode, reason, bot='rank', title='', color="good"):
     headers = {'Content-Type': 'application/json'}
     #  企微
     robot_dict_wechat = {
-        'rank': 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=6550aa34-59ad-4994-9996-142c170130b5',
-        'BB': 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=f9d916cb-6b93-4389-8aa4-f51c755faa0e',}
-    #  slack
-    robot_dict = {}
+        'rank': 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=0179d8d1-2078-41ba-a8da-0fb11bd51880',
+        'BB': 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=f9d916cb-6b93-4389-8aa4-f51c755faa0e'}
     url = robot_dict_wechat[bot]
     if mode == 'fail':
         content = "警告! 失败用例: {}, 失败原因: {}".format(title, reason)
