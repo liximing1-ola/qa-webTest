@@ -2,7 +2,6 @@
 from locust import HttpUser, TaskSet, task, between
 import urllib3
 import urllib.parse
-from common.Session import Session
 urllib3.disable_warnings()
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)  # 禁用安全请求警告
 
@@ -88,7 +87,7 @@ class InterfaceConcurrency(TaskSet):
             print(res.json())
 
     @task(100)
-    def panelGioft(self):
+    def panelGift(self):
         headers = {
             "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko)\
                               Chrome/67.0.3396.99 Safari/537.36",

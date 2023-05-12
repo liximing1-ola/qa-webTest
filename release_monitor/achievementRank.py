@@ -4,7 +4,7 @@ import sys
 
 sys.path.append(os.path.split(os.path.abspath(os.path.dirname(__file__)))[0])
 from common.Config import config
-from common import Request, Assert
+from common import Request
 from common.Hash import add_url
 from common.Robot import robot
 
@@ -39,7 +39,6 @@ def achievementRank(rankType, tab=1):
                                    type=rankType,
                                    tab=tab,
                                    page=2)
-        print(user_profile_url)
         res = Request.get_request_session(url=user_profile_url, data=None)
         for j in res['body']['data']['list']:
             incomeTotal_100 += int(j['score'])
@@ -56,6 +55,7 @@ def achievementRank(rankType, tab=1):
         time_total = '本日'
         user_profile_url = add_url(url_host=config.release_bb_host,
                                    url_base='rank/charmAchieve',
+
                                    url_query=config.banban_query,
                                    url_format='json',
                                    type=rankType,
