@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户加物品</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 450px;
+            width: 100%;
+        }
+
+        .title {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .title h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .title p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            color: #d32f2f;
+            font-weight: bold;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #38ef7d;
+            box-shadow: 0 0 0 3px rgba(56, 239, 125, 0.1);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(56, 239, 125, 0.4);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #11998e;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #38ef7d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            <h1>🎁 用户加物品</h1>
+            <p>内网物品武装部队</p>
+        </div>
+
+        <form action="/addCommodity" method="post">
+            <div class="form-group">
+                <label for="uid">用户UID</label>
+                <input type="text" id="uid" name="uid" size="20" maxlength="20" required>
+            </div>
+
+            <button type="submit" class="btn">确定</button>
+        </form>
+
+        <a href="/" class="back-link">← 返回首页</a>
+    </div>
+</body>
+</html>

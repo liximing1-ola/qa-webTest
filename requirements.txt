@@ -1,0 +1,21 @@
+# API Test Framework Dependencies
+
+# Core dependencies
+requests>=2.28.0
+urllib3>=1.26.0
+PyYAML>=6.0
+jsonschema>=4.0.0
+
+# Testing frameworks
+pytest>=7.0.0
+pytest-html>=3.2.0
+
+# Load testing
+locust>=2.0.0
+
+# Web framework (optional)
+Flask>=2.0.0
+
+# Database
+mysql-connector-python>=8.0.0
+pymysql>=1.0.0

@@ -6,10 +6,10 @@ class config:
     #  工程目录
     BASE_PATH = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
     #  生成报告结果地址
-    results_path = os.path.join(BASE_PATH, 'Data/report/results')
+    results_path = os.path.join(BASE_PATH, 'data/reports/results')
     #  生成报告地址
-    report_path = os.path.join(BASE_PATH, 'report')
-    #  release域名
+    report_path = os.path.join(BASE_PATH, 'data/reports')
+    #  release 域名
     domain_host = {'bb': 'https://api.sleeplessplanet.com/',
                    'bb-46': 'https://192.168.11.46'}
     release_bb_host = domain_host['bb']

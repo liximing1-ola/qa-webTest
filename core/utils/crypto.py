@@ -3,12 +3,12 @@
 """
 import hashlib
 from urllib.parse import urlencode
-from common.Request import get_request_session
-from common.Config import config
+from core.client.request import get_request_session
+from core.config.settings import config
 import json
 
 
-# MD5加密
+# MD5 加密
 def hash_md5(ch):
     for i in ch:
         if u'\u4e00' <= i <= u'\u9fff':
@@ -52,4 +52,3 @@ if __name__ == '__main__':
     re = get_request_session(url, data=None)
     print(re)
     print(json.dumps(re))
-

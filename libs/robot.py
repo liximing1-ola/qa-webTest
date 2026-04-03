@@ -9,7 +9,7 @@ def robot(mode, reason, bot='rank', title='', color="good"):
         'BB': 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=f9d916cb-6b93-4389-8aa4-f51c755faa0e'}
     url = robot_dict_wechat[bot]
     if mode == 'fail':
-        content = "警告! 失败用例: {}, 失败原因: {}".format(title, reason)
+        content = f"警告！失败用例：{title}, 失败原因：{reason}"
         data = {
             "msgtype": "text",
             "text": {
@@ -59,10 +59,6 @@ def robot(mode, reason, bot='rank', title='', color="good"):
                         }
                     ]
                 }
-
-
-
-
             ]
         }
         requests.post(url, headers=headers, json=data)
